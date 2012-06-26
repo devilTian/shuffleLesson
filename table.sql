@@ -8,7 +8,7 @@ CREATE TABLE datetime(
 )Engine=InnoDB;
 
 CREATE TABLE book(
-   id INT NOT NULL,
+   id INT NOT NULL AUTO_INCREMENT,
    name char(100) NOT NULL,
    PRIMARY KEY(id)
 )Engine=InnoDB;
