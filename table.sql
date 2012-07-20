@@ -2,7 +2,7 @@ CREATE DATABASE shuffleLesson;
 
 USE shuffleLesson;
 
-CREATE TABLE datetime(
+CREATE TABLE recordTime(
     id INT NOT NULL,
     datetime datetime NOT NULL
 )Engine=InnoDB;
