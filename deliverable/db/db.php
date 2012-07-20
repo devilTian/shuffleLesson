@@ -1,5 +1,5 @@
 <?php
-    abstract class Base {
+    abstract class DbBase {
 	static $DB;
 	static $stmts = array();
 	
@@ -29,19 +29,42 @@
 	    return $stmt_handle;
 	}
 
+	/*
+	** @return boolean.
+	*/
 	protected function doStatement( $stmt_s, $values_a) {
 	    $sth = $this->prepareStatement( $stmt_s );
 	    $sth->closeCursor();
 	    $db_result = $sth->execute( $values_a );
+	    if ( !$db_result ) {
+	        throw new Exception("sql statement->[$stmt_s] can`t be executed successfully!");
+	    }
 	    return $sth;
+	}
+	
+	/*
+	** @param $fetchStyle. 
+	**  Controls how the next row will be returned to the caller.
+	*/
+        protected function fetch(PDOStatement $sth, $fetchStyle) {
+	    return $sth->fetch($fetchStyle);
+        }
+    }
+
+    class Book extends DbBase {
+
+        function addNewBook( $bookName ) {
+    	    $sql = 'INSERT INTO book value("", ?)';
+	    $values = array( $bookName );
+            $this->doStatement($sql, $values);
+        }
+       
+        function getBookName( $bookId ) {
+    	    $sql = 'select name from book where id = ' . $bookId;
+	    $values = array( $bookId );
+            $sth =  $this->doStatement($sql, $values);
+	    return $this->fetch($sth, PDO::FETCH_ASSOC);
 	}
     }
 
-    class book extends Base {
-        function selectABook( $bookId ) {
-    	    $sql = 'select * from lesson where les_bookid = ' . $bookId;
-	    $values = array( $bookId );
-            return $this->doStatement($sql, $values);
-	}
-    }
 ?>
