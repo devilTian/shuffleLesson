@@ -17,7 +17,7 @@
 
 	public function testAddNewBook() {
 	    $this->setExpectedException('PDOException');
-	    $actual_value   = $this->book->addNewBook(null);
+	    $actual_value = $this->book->addNewBook(null);
 	}
     } 
 ?>
