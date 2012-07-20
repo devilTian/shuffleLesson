@@ -35,9 +35,9 @@
 	protected function doStatement( $stmt_s, $values_a) {
 	    $sth = $this->prepareStatement( $stmt_s );
 	    $sth->closeCursor();
-	    $db_result = $sth->execute( $values_a );
-	    if ( !$db_result ) {
-	        throw new Exception("sql statement->[$stmt_s] can`t be executed successfully!");
+	    $result = $sth->execute( $values_a );
+	    if ( !$result ) {
+	        throw new Exception("sql statement->[$stmt_s] can`t be executed successfully!", 10);
 	    }
 	    return $sth;
 	}
