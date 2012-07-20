@@ -1,0 +1,5 @@
+<phpunit>   
+    <php>
+        <const name="aPATH" value="../deliverable/db/db.php"/>
+    </php>
+</phpunit>

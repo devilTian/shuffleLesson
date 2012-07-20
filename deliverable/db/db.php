@@ -37,14 +37,11 @@
 	}
     }
 
-
-    class x extends Base {
-        function a() {
-    	    $sql = 'select * from lesson';
-	    $values = array();
+    class book extends Base {
+        function selectABook( $bookId ) {
+    	    $sql = 'select * from lesson where les_bookid = ' . $bookId;
+	    $values = array( $bookId );
             return $this->doStatement($sql, $values);
 	}
     }
-    $x = new x();
-    var_dump($x->a()->fetchColumn(2));
 ?>
