@@ -1,4 +1,5 @@
 <?php
+    require_once('/usr/local/apache2/htdocs/git_dt/shuffleLesson/deliverable/exception/exception.php');
     abstract class DbBase {
 	static $DB;
 	static $stmts = array();
@@ -10,7 +11,7 @@
 	    $pwd  = '123123';
 
 	    if ( is_null( $dsn ) ) {
-		throw new Exception('No DSN');
+		throw new DbException('No DSN');
 	    }
 	    self::$DB = new PDO( $dsn, $user, $pwd );
 	    self::$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -37,7 +38,7 @@
 	    $sth->closeCursor();
 	    $result = $sth->execute( $values_a );
 	    if ( !$result ) {
-	        throw new Exception("sql statement->[$stmt_s] can`t be executed successfully!", 10);
+	        throw new DbException("sql statement->[$stmt_s] can`t be executed successfully!");
 	    }
 	    return $sth;
 	}
