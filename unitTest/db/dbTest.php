@@ -12,6 +12,9 @@
         function fetch(PDOStatement $sth, $fetchStyle) {
             return parent::fetch($sth, $fetchStyle);
 	}
+        function fetchAll(PDOStatement $sth, $fetchStyle) {
+            return parent::fetchAll($sth, $fetchStyle);
+	}
     }
 
     class DbBaseTest extends PHPUnit_Framework_TestCase {
@@ -70,6 +73,16 @@
             $actual_value = $this->subTest->fetch($stub, PDO::FETCH_ASSOC);
 	    $this->assertEquals($actual_value['name'], 'OneDay');
 	}
+
+	public function testFetchAll() {
+	    $stub = $this->getMock('PDOStatement', array('fetchAll'));
+	    $stub->expects($this->any())
+	         ->method('fetchAll')
+	         ->will($this->returnValue(array('name' => 'OneDay')));
+            $actual_value = $this->subTest->fetchAll($stub, PDO::FETCH_ASSOC);
+	    $this->assertEquals($actual_value['name'], 'OneDay');
+	}
+
 
 	public function tearDown() {
 	    unset($this->subTest);

@@ -51,5 +51,9 @@
         protected function fetch(PDOStatement $sth, $fetchStyle) {
 	    return $sth->fetch($fetchStyle);
         }
+
+        protected function fetchAll(PDOStatement $sth, $fetchStyle) {
+	    return $sth->fetchAll($fetchStyle);
+        }
     }
 ?>
