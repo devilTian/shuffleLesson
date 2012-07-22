@@ -1,5 +1,5 @@
 <?php
-    require_once('/usr/local/apache2/htdocs/git_dt/shuffleLesson/deliverable/exception/exception.php');
+    require_once(__dir__ . '/../exception/exception.php');
 
     abstract class DbBase {
 	static $DB;
