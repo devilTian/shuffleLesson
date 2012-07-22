@@ -1,2 +1,11 @@
-1. run it
+1. how to run it
 >phpunit .
+
+2. layout
+	unitTest
+	|-- db
+	|   |-- dbTest.php
+	|    -- bookTest.php
+	|
+	|
+	 -- phpunit.xml
