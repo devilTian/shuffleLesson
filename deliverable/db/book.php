@@ -5,7 +5,7 @@
 	static $sql = array(
 	    'insert' => 'INSERT INTO book value(\'\', ?)',
 	    'select' => 'select name from book where id = ?',
-	    'delete' => 'delete from book where name = ?'
+	    'delete' => 'delete from book where id = ?'
 	);
 	
         function addNewBook( $bookName ) {
@@ -19,8 +19,8 @@
 	    return $this->fetch($sth, PDO::FETCH_ASSOC);
 	}
 
-        function deleteABook( $bookName ) {
-	    $values = array( $bookName );
+        function deleteABook( $bookId ) {
+	    $values = array( $bookId );
 	    $this->doStatement(self::$sql['delete'], $values);
 	} 
     }

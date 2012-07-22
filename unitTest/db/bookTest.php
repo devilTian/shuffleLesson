@@ -40,7 +40,7 @@
 	    $stub = $this->getMock('Book', array('doStatement'));
 	    $stub->expects($this->any())
 	         ->method('doStatement')
-	         ->with($this->equalTo('delete from book where name = ?', 1));
+	         ->with($this->equalTo('delete from book where id = ?', 1));
 	    $stub->deleteABook('testbook');
 	}
 
