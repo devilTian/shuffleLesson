@@ -1,5 +1,5 @@
 <?php
-    require_once(PATH);
+    require_once(PATH . '/db/db.php');
 
     class mockPDO extends PDO {
 	function __construct() {}

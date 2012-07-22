@@ -1,5 +1,6 @@
 <?php
     require_once('/usr/local/apache2/htdocs/git_dt/shuffleLesson/deliverable/exception/exception.php');
+
     abstract class DbBase {
 	static $DB;
 	static $stmts = array();
@@ -51,30 +52,4 @@
 	    return $sth->fetch($fetchStyle);
         }
     }
-
-    class Book extends DbBase {
-
-	static $sql = array(
-	    'insert' => 'INSERT INTO book value(\'\', ?)',
-	    'select' => 'select name from book where id = ?',
-	    'delete' => 'delete from book where name = ?'
-	);
-	
-        function addNewBook( $bookName ) {
-	    $values = array( $bookName );
-            $this->doStatement(self::$sql['insert'], $values);
-        }
-       
-        function getBookName( $bookId ) {
-	    $values = array( $bookId );
-            $sth    = $this->doStatement(self::$sql['select'], $values);
-	    return $this->fetch($sth, PDO::FETCH_ASSOC);
-	}
-
-        function deleteABook( $bookName ) {
-	    $values = array( $bookName );
-	    $this->doStatement(self::$sql['delete'], $values);
-	} 
-    }
-
 ?>
