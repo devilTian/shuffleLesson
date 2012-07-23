@@ -14,7 +14,7 @@
 	    $stub = $this->getMock('Book', array('doStatement'));
 	    $stub->expects($this->any())
 	         ->method('doStatement')
-	         ->with($this->equalTo('INSERT INTO book value(\'\', ?)'));
+	         ->with('INSERT INTO book value(\'\', ?)', array('testbook'));
 	    $stub->addNewBook('testbook');
 
  	    // bookname is null, so throw a Exception
@@ -26,7 +26,7 @@
 	    $stub = $this->getMock('Book', array('doStatement', 'fetch'));
 	    $stub->expects($this->any())
 	         ->method('doStatement')
-	         ->with($this->equalTo('select name from book where id = ?', 1))
+	         ->with('select name from book where id = ?', array(1))
 	         ->will($this->returnValue(new PDOStatement()));
 	    $stub->expects($this->any())
 	         ->method('fetch')
@@ -40,8 +40,16 @@
 	    $stub = $this->getMock('Book', array('doStatement'));
 	    $stub->expects($this->any())
 	         ->method('doStatement')
-	         ->with($this->equalTo('delete from book where id = ?', 1));
-	    $stub->deleteABook('testbook');
+	         ->with('delete from book where id = ?', array(1));
+	    $stub->deleteABook(1);
+	}
+
+	public function testUpdateBookState() {
+	    $stub = $this->getMock('Book', array('doStatement'));
+	    $stub->expects($this->any())
+	         ->method('doStatement')
+	         ->with('update book set state = ? where id = ?', array('C', 1));
+	    $stub->updateBookState(1, 'C');
 	}
 
 	public function tearDown() {

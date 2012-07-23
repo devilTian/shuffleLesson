@@ -5,7 +5,8 @@
 	static $sql = array(
 	    'insert' => 'INSERT INTO book value(\'\', ?)',
 	    'select' => 'select name from book where id = ?',
-	    'delete' => 'delete from book where id = ?'
+	    'delete' => 'delete from book where id = ?',
+	    'update' => 'update book set state = ? where id = ?'
 	);
 	
         function addNewBook( $bookName ) {
@@ -22,6 +23,11 @@
         function deleteABook( $bookId ) {
 	    $values = array( $bookId );
 	    $this->doStatement(self::$sql['delete'], $values);
+	}
+
+	function updateBookState( $bookId, $state ) {
+	    $values = array( $state, $bookId );
+	    $this->doStatement(self::$sql['update'], $values);
 	} 
     }
 
