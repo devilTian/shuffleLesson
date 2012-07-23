@@ -18,7 +18,7 @@ BEGIN
 END; //
 DELIMITER ;
 
-INSERT INTO book value(NULL, 'NEW CONCEPT ENGLISH');
+INSERT INTO book value(NULL, 'NEW CONCEPT ENGLISH', 'N');
 
 CALL getBookId(@bId);
 
