@@ -5,7 +5,7 @@ CREATE PROCEDURE getBookId(
     OUT bId INT
 )
 BEGIN
-   SELECT id from book where name = 'NEW CONCEPT ENGLISH' INTO bId;
+   SELECT id from book where name = 'NEW CONCEPT ENGLISH 2' INTO bId;
 END;
 
 CREATE PROCEDURE setNewLesson(
@@ -18,7 +18,8 @@ BEGIN
 END; //
 DELIMITER ;
 
-INSERT INTO book value(NULL, 'NEW CONCEPT ENGLISH', 'N');
+INSERT INTO book value(NULL, 'NEW CONCEPT ENGLISH 1', 'N');
+INSERT INTO book value(NULL, 'NEW CONCEPT ENGLISH 2', 'N');
 
 CALL getBookId(@bId);
 
