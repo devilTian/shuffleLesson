@@ -5,7 +5,8 @@
 	unitTest
 	|-- db
 	|   |-- dbTest.php
-	|    -- bookTest.php
+	|   |-- bookTest.php
+	|    -- lessonTest.php
 	|
 	|
 	 -- phpunit.xml
