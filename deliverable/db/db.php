@@ -12,10 +12,12 @@
 	    $pwd  = '123123';
 
 	    if ( is_null( $dsn ) ) {
-		throw new DbException('No DSN');
+			throw new DbException('No DSN');
 	    }
-	    self::$DB = new PDO( $dsn, $user, $pwd );
-	    self::$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		if ( empty( self::$DB) ) {
+ 		    self::$DB = new PDO( $dsn, $user, $pwd );
+		    self::$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		}
 	}
 
 	function getLastInsertId() {
