@@ -1,8 +1,8 @@
 <?php
-    date_default_timezone_set('Asia/Chongqing');
-    require_once(__dir__ . '/db.php');
+date_default_timezone_set('Asia/Chongqing');
+require_once(__dir__ . '/db.php');
 
-    class Lesson extends DbBase {
+class Lesson extends DbBase {
 	static $sql = array(
 	    'selectLessons' => 'SELECT * FROM lesson WHERE les_bookid = ?',
 	    'selectALesson' => 'SELECT * FROM lesson WHERE les_id = ?',
@@ -44,5 +44,5 @@
 	
 	//TODO
 	function deleteALesson() {}
-    }
+}
 ?>

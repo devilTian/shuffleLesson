@@ -23,12 +23,12 @@
 
         function deleteABook( $bookId ) {
 	    	$values = array( $bookId );
-	  	  $this->doStatement(self::$sql['delete'], $values);
+	  		$this->doStatement(self::$sql['delete'], $values);
 		}
 
 		function updateBookState( $bookId, $state ) {
-		    $values = array( $state, $bookId );
-	    	$this->doStatement(self::$sql['update'], $values);
+			$values = array( $state, $bookId );
+			$this->doStatement(self::$sql['update'], $values);
 		}
 		
 		function getAllBooks() {

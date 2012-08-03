@@ -1,7 +1,7 @@
 <?php
-    require_once(__dir__ . '/../exception/exception.php');
+require_once(__dir__ . '/../exception/exception.php');
 
-    abstract class DbBase {
+abstract class DbBase {
 	static $DB;
 	static $stmts = array();
 	
@@ -50,12 +50,12 @@
 	** @param $fetchStyle. 
 	**  Controls how the next row will be returned to the caller.
 	*/
-        protected function fetch(PDOStatement $sth, $fetchStyle) {
+    protected function fetch(PDOStatement $sth, $fetchStyle) {
 	    return $sth->fetch($fetchStyle);
-        }
-
-        protected function fetchAll(PDOStatement $sth, $fetchStyle) {
-	    return $sth->fetchAll($fetchStyle);
-        }
     }
+
+	protected function fetchAll(PDOStatement $sth, $fetchStyle) {
+		return $sth->fetchAll($fetchStyle);
+	}
+}
 ?>
