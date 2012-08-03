@@ -8,7 +8,9 @@
     </head>
 	<body>
         <!-- header -->
-		<?php require_once('mainNav.html'); ?>
+		<?php
+			VH::instance()->showMainNav();
+		?>
 		<!-- wrapper-->    
 		<div id="wrapper">
 			<!-- sub-navigation -->
@@ -58,7 +60,9 @@
 				</div>
 			</div>
 			<br style="clear:both"/>
-	    	<?php include_once('footer.html');?>
+			<?php
+				VH::instance()->showFooter();
+			?>
 		</div>
 	
 	</body>

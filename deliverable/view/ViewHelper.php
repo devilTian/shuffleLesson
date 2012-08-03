@@ -13,6 +13,14 @@
 			}
 			return self::$instance;
 		}
+		
+		public function showMainNav() {
+		    include_once('mainNav.html');
+		}
+
+		public function showFooter() {
+	    	include_once('footer.html');
+		}
 
 		public function showAllBooks() {
 			$book = new Book();
