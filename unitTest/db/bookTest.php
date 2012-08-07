@@ -1,5 +1,5 @@
 <?php
-    require_once(PATH . '/db/book.php');
+    require_once('deliverable/db/book.php');
    
     class BookTest extends PHPUnit_Framework_TestCase {
 	

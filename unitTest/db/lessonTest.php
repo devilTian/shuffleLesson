@@ -1,10 +1,10 @@
 <?php
-    require_once(PATH . '/db/lesson.php');
+    require_once('deliverable/db/lesson.php');
    
     class subLesson extends Lesson {
-	public function shuffleAlgorithm($fetResult) {
-	    return parent::shuffleAlgorithm($fetResult);
-	}
+		public function shuffleAlgorithm($fetResult) {
+	    	return parent::shuffleAlgorithm($fetResult);
+		}
     }
 
     class LessonTest extends PHPUnit_Framework_TestCase {

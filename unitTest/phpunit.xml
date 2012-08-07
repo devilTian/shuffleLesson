@@ -1,5 +1,0 @@
-<phpunit>
-    <php>
-        <const name="PATH" value="/usr/local/apache2/htdocs/git_dt/shuffleLesson/deliverable"/>
-    </php>
-</phpunit>

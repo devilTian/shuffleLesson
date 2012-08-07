@@ -1,5 +1,5 @@
 1. how to run it
->phpunit .
+>phpunit unitTest
 
 2. layout
 	unitTest
