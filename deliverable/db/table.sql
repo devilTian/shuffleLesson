@@ -10,10 +10,10 @@ CREATE TABLE recordTime(
 CREATE TABLE book(
    	id INT NOT NULL AUTO_INCREMENT,
    	name char(100) NOT NULL,
-   	state ENUM('N', 'W', 'R', 'C') NOT NULL DEFAULT 'N',
-	category char(20),
-	description TEXT,
-   	PRIMARY KEY(id)
+	state ENUM('N', 'W', 'R', 'C') NOT NULL DEFAULT 'N',
+    category char(20),
+    description TEXT,
+    PRIMARY KEY(id)
 )Engine=InnoDB;
 
 CREATE TABLE lesson(
