@@ -4,14 +4,14 @@
     class Book extends DbBase {
 		static $sql = array(
 			'selectAllBooks'=> 'SELECT * FROM book',
-	    	'insert'        => 'INSERT INTO book value(\'\', ?)',
+	    	'insert'        => 'INSERT INTO book value(\'\', ?, ?, ?)',
 	 	   	'selectABook'   => 'select name from book where id = ?',
 	 	   	'delete' 	    => 'delete from book where id = ?',
 		    'update'        => 'update book set state = ? where id = ?'
 		);
 	
-        function addNewBook( $bookName ) {
-	    	$values = array( $bookName );
+        function addNewBook( $bookName, $category=null, $description=null ) {
+	    	$values = array( $bookName, $category, $description);
             $this->doStatement(self::$sql['insert'], $values);
         }
        

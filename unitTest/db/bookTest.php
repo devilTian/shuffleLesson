@@ -14,7 +14,7 @@
 		    $stub = $this->getMock('Book', array('doStatement'));
 		    $stub->expects($this->any())
 	    	     ->method('doStatement')
-	         ->with('INSERT INTO book value(\'\', ?)', array('testbook'));
+	         ->with('INSERT INTO book value(\'\', ?, ?, ?)', array('testbook', null, null));
 		    $stub->addNewBook('testbook');
 
  		    // bookname is null, so throw a Exception
