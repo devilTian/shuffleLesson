@@ -16,6 +16,7 @@ abstract class DbBase {
 	    }
 		if ( empty( self::$DB) ) {
  		    self::$DB = new PDO( $dsn, $user, $pwd );
+            self::$DB->query("SET NAMES 'utf8'");
 		    self::$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 	}

@@ -5,7 +5,7 @@ CREATE PROCEDURE getBookId(
     OUT bId INT
 )
 BEGIN
-   SELECT id from book where name = 'NEW CONCEPT ENGLISH 2' INTO bId;
+   SELECT id from book where name = 'NEW CONCEPT ENGLISH 2 (New Edition)' INTO bId;
 END;
 
 CREATE PROCEDURE setNewLesson(
@@ -18,8 +18,8 @@ BEGIN
 END; //
 DELIMITER ;
 
-INSERT INTO book value(NULL, 'NEW CONCEPT ENGLISH 1', 'N');
-INSERT INTO book value(NULL, 'NEW CONCEPT ENGLISH 2', 'N');
+INSERT INTO book value('', 'NEW CONCEPT ENGLISH 1 (New Edition)', 'N', '特色/品牌英语', '《朗文•外研社•新概念英语2:实践与进步(新版)》是该教材首次出版以来第一次推出的新版本。这套经典教材一如既往地向读者提供一个完整的、经过实践检验的英语学习体系，使学生 有可能在英语的四项基本技能--理解、口语、阅读和写作--方面最大限度地发挥自己的潜能。 新版本保留了《新概念英语》得以成为世界闻名英语教程的一套基本原则，同时又包含了以下重要特色：专为中国的英语学习人士而改编，根据中国读者的需要增添了词汇表、课文注释、练习讲解和课文的参考译文。剔出了所有过时的内容，其中过时的课文有新课文取代，并配以全新的练习和插图。对原有教学法进行调整，更利于学生加强交际能力。内容更简洁精练，取消过去单独出版的繁琐补充材料，将其精华纳入主要教材。版面加大，方便翻阅；每课书相对独立，以利课堂教学');
+INSERT INTO book value('', 'NEW CONCEPT ENGLISH 2 (New Edition)', 'N', '特色/品牌英语', '');
 
 CALL getBookId(@bId);
 

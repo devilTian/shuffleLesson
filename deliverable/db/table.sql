@@ -1,4 +1,4 @@
-CREATE DATABASE shuffleLesson;
+CREATE DATABASE shuffleLesson DEFAULT CHARACTER SET utf8;
 
 USE shuffleLesson;
 
