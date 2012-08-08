@@ -15,21 +15,33 @@
 		}
 		
 		public function showMainNav() {
-		    include_once('mainNav.html');
+		    include_once('Layout/mainNav.html');
 		}
 
+        public function simpleCharSet() {
+            echo "<meta content='text/html;charset=utf-8'>";
+        }
+
 		public function showFooter() {
-	    	include_once('footer.html');
+	    	include_once('Layout/footer.html');
 		}
 
 		public function showAllBooks() {
 			$book = new Book();
 			$books = $book->getAllBooks();
-
+            
+            $isLast = 1;
 			foreach( $books as $book ) {
-				echo "<li class='book_normal'>".
-					 "<img title='{$book['name']}' src='image/book{$book['id']}_normal.jpg'/>".
-					 "</li>";
+                if( $isLast == 5 ) {
+				    echo "<li class='last'>";
+                    $isLast = 1;
+                } else {
+				    echo "<li class='book_normal'>";
+                    $isLast ++;
+                }
+                echo "<a href='#'>".
+                    "<img title='{$book['name']}' src='image/shuffleLesson/mpic/book{$book['id']}.jpg'/>".
+					"</li></a>";
 			}
 		}
 	}

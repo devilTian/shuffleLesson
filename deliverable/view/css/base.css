@@ -24,6 +24,9 @@
 	.clearfix {
 		clear:both;
 	}
+    .last {
+        margin:0px;
+    }
 
 	#top_nav {
 		border-bottom:1px dashed #DDDDDD;

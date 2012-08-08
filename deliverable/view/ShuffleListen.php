@@ -3,7 +3,10 @@
 ?>
 <html>
     <head>
-		<title></title>
+        <?php
+			VH::instance()->simpleCharSet();
+		?>
+		<title>Shuffle Listen</title>
 		<link rel='stylesheet' media='screen' type='text/css' href='css/base.css'/>
     </head>
 	<body>
@@ -37,7 +40,7 @@
 			<div id="content">
 				<div class='article'>
 					<div class="article_img_div">
-						<img src='image/listen_article.jpg'>
+						<img src='image/shuffleLesson/listen_article.jpg'>
 					</div>
 					<div class="res_express clearfix">
 						<h2>
@@ -56,7 +59,7 @@
 					</div>
 				</div>
 				<div class='aside'>
-					<img src='image/listen_aside.jpg'>
+					<img src='image/shuffleLesson/listen_aside.jpg'>
 				</div>
 			</div>
 			<br style="clear:both"/>
