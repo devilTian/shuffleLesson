@@ -22,20 +22,6 @@
 		    $this->book->addNewBook(null);
 		}	
 
-	 	public function testGetBookName() {
-		    $stub = $this->getMock('Book', array('doStatement', 'fetch'));
-	        $stub->expects($this->any())
-	        	 ->method('doStatement')
-	        	 ->with('select name from book where id = ?', array(1))
-				 ->will($this->returnValue(new PDOStatement()));
-		    $stub->expects($this->any())
-		         ->method('fetch')
-	    	     ->will($this->returnValue(array('name' => 'testbook')));
-	    	$actual_value   = $stub->getBookName(1);
-		    $expected_value = array( 'name' => 'testbook' ); 
-		    $this->assertEquals($actual_value, $expected_value);
-		}
-
 		public function testDeleteABook() {
 		    $stub = $this->getMock('Book', array('doStatement'));
 	    	$stub->expects($this->any())
@@ -53,7 +39,7 @@
 		}
 
 		public function testGetAllBooks() {
-			$stub = $this->getMock('Book', array('doStatement', 'fetchAll'));
+            $stub = $this->getMock('Book', array('doStatement', 'fetchAll'));
 	        $stub->expects($this->any())
 	        	 ->method('doStatement')
 	        	 ->with('SELECT * FROM book', array())
@@ -63,6 +49,20 @@
 	    	     ->will($this->returnValue(array('name' => 'testbook')));
 	    	$actual_value   = $stub->getAllBooks();
 		    $expected_value = array( 'name' => 'testbook' ); 
+		    $this->assertEquals($actual_value, $expected_value);
+	    }
+	
+     	public function testGetSpecifiedBook() {
+		    $stub = $this->getMock('Book', array('doStatement', 'fetch'));
+	        $stub->expects($this->any())
+	        	 ->method('doStatement')
+	        	 ->with('select * from book where id = ?', array(1))
+				 ->will($this->returnValue(new PDOStatement()));
+		    $stub->expects($this->any())
+		         ->method('fetch')
+	    	     ->will($this->returnValue(array('id' => 1, 'name' => 'testbook', 'state' => 'N', 'category' => 'test', 'description' => null)));
+	    	$actual_value   = $stub->getSpecifiedBook(1);
+		    $expected_value = array('id' => 1, 'name' => 'testbook', 'state' => 'N', 'category' => 'test', 'description' => null ); 
 		    $this->assertEquals($actual_value, $expected_value);
 		}
 

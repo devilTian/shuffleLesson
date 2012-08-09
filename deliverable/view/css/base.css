@@ -1,12 +1,20 @@
 	body {
 		font-size:14px;
-		margin:0px;
+		margin-top:0px;
 		padding:0px;
+        line-height:162%;
 	}
 	body a {
 		text-decoration:none;
 		cursor:pointer;
 	}
+
+    h1 {
+        font-size: 25px;
+        font-weight: bold;
+        color: #494949;
+        line-height: 1.1;
+    }
 	h2 {
 		color: #006600;
 		font: 14px/150% Arial,Helvetica,sans-serif;
@@ -27,17 +35,37 @@
     .last {
         margin:0px;
     }
+    .tab {
+        margin-left:50px;
+    }
+    .indent {
+        text-indent:2em;
+    }
+    .font_bold {
+        font-weight:bold;
+    }
+    .margin_all_10 {
+        margin:10px;
+    }
 
 	#top_nav {
-		border-bottom:1px dashed #DDDDDD;
+        clear:both;
+        width:100%;
+        height:30px;
+        margin-bottom:20px;
+		border-bottom:1px dashed #D4D4D4;
 	}
+    .bd {
+		margin: 0px auto;
+		width: 950px;
+    }
 	.main_nav {
 		float:left;
-		margin:10px 20px 10px 20px;
+		margin-top:3px;
 	}
 	.log_nav {
 		float:right; 
-		margin:10px 20px 10px 20px;
+		margin-top:3px;
 	}
 	.main_nav a,.log_nav a {
 		font-size:12px;
@@ -68,6 +96,36 @@
 		color:#FFFFFF;
 		background-color:#0C7826;
 	}
+    .listenbook_cover img {
+        border-right: solid 5px #CCC;
+        border-bottom: solid 4px #AAA;
+        border-left: solid 1px #AAA;
+        border-top: solid 1px #AAA;
+    }
+    .specBookInfo {
+        margin-top: 4px;
+    }
+    .specBookInfo span {
+        color:#666;
+        font-size:12px;
+        padding-bottom:8px;
+        font-weight:normal;
+    }
+    .specBookInfo_count, .lessonName {
+        font-weight:bold;
+        color:#209E85;
+    }
+    .collect_btn {
+        color:#669;
+    }
+    .collect_btn:hover {
+        color:white;
+        background:#039;
+    }
+    .related_info {
+        margin-top:24px;
+        margin-bottom:3px;
+    }
 
 	#wrapper {
 		margin: 15px auto;
