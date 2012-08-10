@@ -82,6 +82,9 @@
                 if ( empty($score) ) {
                     $score = '-';
                 }
+                if ( empty($recordLastedTime) ) {
+                    $recordLastedTime = '-';
+                }
                 if ( $i+1 == $length ) {
                     echo '<div>';
                 }
@@ -101,9 +104,13 @@
             }
             echo '</div>';
         }
+
         public function showSpecBookInfo( $bookData ) {
+            $bookId        = $bookData['id'];
+            $studyProgress = $this->lesson->getStudyProgress($bookId);
+            $lessonCount   = $this->lesson->getLessonCount( $bookId );
             echo '<div class="float_left" style="width:100%;padding-bottom:15px;border-bottom:solid 1px #CCC">';
-            $this->showSpecBookImg( $bookData['id'] );
+            $this->showSpecBookImg( $bookId );
             echo "<div class='float_left specBookInfo'>
                 <div>
                     <span>上传人：</span>
@@ -117,7 +124,7 @@
                 </div>
                 <div class='specBookInfo_count'>
                     <span>课文数：</span>
-                    123123
+                    $lessonCount
                     <br/>
                 </div>
                 <div>
@@ -126,12 +133,12 @@
                 </div>
                 <div class='specBookInfo_count'>
                     <span>学习进度：</span>
-                    000%
+                    {$studyProgress}%
                     <br/>
                 </div>
                 </div></div>";
             echo "<div class='clearfix' style='padding:20px 0px 3px'>";
-            $this->showCollectBtn($bookData['id'], $bookData['state']);
+            $this->showCollectBtn($bookId, $bookData['state']);
             echo "</div>";
             
             echo "<div class='clearfix related_info'>
@@ -140,7 +147,7 @@
                 </div>";
             echo "<div class='clearfix related_info'>
                 <h2>书中包含文章   · · · · · · </h2>";
-            $this->showAllLessonsFromBook($bookData['id']);
+            $this->showAllLessonsFromBook($bookId);
             echo "</div>";
         }
 
@@ -163,13 +170,25 @@
 		}
 
         public function getSpecifiedBook($bookId) {
-			$book = $this->book->getSpecifiedBook($bookId);
-            return $book;
+			return $this->book->getSpecifiedBook($bookId);
         }
 
         public function setBookState( $bookId, $newState ) {
             $this->book->updateBookState($bookId, $newState);
         }
 
+        public function showListenBookCategory() {
+            $category = $this->book->getCategory();
+            echo "<div style='background:#FFF6ED;padding:4px 9px;border:2px solid #FAEFE3;margin-bottom:20px'>
+                  <a class='createBook_btn' href='#'>创建听力书</a>
+                  </div>
+                  <div class='listenBookCategory'>
+                  <ul>
+                  <h2>听力书分类 · · · · · ·</h2>";
+            foreach ( $category as $c ) {
+                echo "<li><a href='#'>{$c['category']}</a></li>";
+            }
+            echo '</ul></div>';
+        }
 	}
 ?>

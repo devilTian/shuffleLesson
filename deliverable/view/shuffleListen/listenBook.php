@@ -37,7 +37,7 @@
                     ?>
 				</div>
 				<div class='aside'>
-                    1
+                    <?php VH::instance()->showListenBookCategory(); ?>
 				</div>
 			</div>
 			<?php

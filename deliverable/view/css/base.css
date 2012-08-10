@@ -118,13 +118,40 @@
     .collect_btn {
         color:#669;
     }
-    .collect_btn:hover {
+    .createBook_btn:hover, .collect_btn:hover {
         color:white;
         background:#039;
     }
     .related_info {
         margin-top:24px;
         margin-bottom:3px;
+    }
+    .listenBookCategory {
+        background:#F4F4EC;
+        padding:10px;
+        margin-bottom:20px;
+        word-wrap:break-word;
+    }
+    .listenBookCategory>ul {
+        padding:0px;
+    }
+    .listenBookCategory>ul>li a{
+        color:#369;
+        display:block;
+    }
+    .listenBookCategory>ul>li {
+        padding:10px;
+        border-bottom:1px solid #CCC;
+        font-size: 14px;
+        font-weight:bold;
+        line-height:20px;
+        cursor:pointer;
+    }
+    .listenBookCategory>ul li:hover {
+        background-color:#209E85;
+    }
+    .listenBookCategory>ul li:hover a{
+        color:#FFF;
     }
 
 	#wrapper {

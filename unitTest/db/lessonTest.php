@@ -88,6 +88,35 @@
     	    $this->assertEquals($actual_value, array('2011 11-11-11 12:12:12'));
         }
 
+        public function testGetLessonCount() {
+            $stub = $this->getMock('Lesson', array('doStatement', 'fetch'));
+            $stub->expects($this->any())
+                 ->method('doStatement')
+                 ->with('SELECT COUNT(*) AS sum FROM lesson WHERE les_bookid=?', array(2))
+        		 ->will($this->returnValue($this->pdoStatInstance));
+	        $stub->expects($this->any())
+	             ->method('fetch')
+        		 ->will($this->returnValue(array('sum' => '96')));
+	        $actual_value = $stub->getLessonCount(2);
+    	    $this->assertEquals($actual_value, 96);
+        }
+
+        public function testGetStudyProgress() {
+            $stub = $this->getMock('Lesson', array('doStatement', 'fetch', 'getLessonCount'));
+            $stub->expects($this->any())
+                 ->method('doStatement')
+                 ->with('SELECT COUNT(DISTINCT les_id) AS hasListenedCount FROM recordTime WHERE les_id IN (select les_id from lesson where les_bookid=?)', array(2))
+        		 ->will($this->returnValue($this->pdoStatInstance));
+	        $stub->expects($this->any())
+	             ->method('fetch')
+        		 ->will($this->returnValue(array('hasListenedCount' => '3')));
+	        $stub->expects($this->any())
+	             ->method('getLessonCount')
+        		 ->will($this->returnValue(96));
+	        $actual_value = $stub->getStudyProgress(2);
+    	    $this->assertEquals($actual_value, 3.125);
+        }
+
 	    public function tearDown() {
 	        unset($this->lesson);
             unset($this->pdoStatInstance);

@@ -7,8 +7,9 @@
 	    	'insert'        => 'INSERT INTO book value(\'\', ?, ?, ?)',
 	 	   	'delete' 	    => 'delete from book where id = ?',
 		    'update'        => 'update book set state = ? where id = ?',
-            'getSpecBook'   => 'select * from book where id = ?'
-		);
+            'getSpecBook'   => 'select * from book where id = ?',
+            'getCategory'   => 'SELECT DISTINCT category FROM book'
+		); 
 	
         function addNewBook( $bookName, $category=null, $description=null ) {
 	    	$values = array( $bookName, $category, $description);
@@ -26,7 +27,7 @@
 		}
 		
 		function getAllBooks() {
-            $sth    = $this->doStatement(self::$sql['selectAllBooks'], array());
+            $sth = $this->doStatement(self::$sql['selectAllBooks'], array());
 		    return $this->fetchAll($sth, PDO::FETCH_ASSOC);
 		}
 
@@ -34,6 +35,11 @@
 		    $values = array( $bookId );
             $sth    = $this->doStatement(self::$sql['getSpecBook'], $values);
 		    return $this->fetch($sth, PDO::FETCH_ASSOC);
+        }
+
+        function getCategory() {
+            $sth = $this->doStatement(self::$sql['getCategory'], array());
+		    return $this->fetchAll($sth, PDO::FETCH_ASSOC);
         }
     }
 ?>

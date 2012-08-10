@@ -66,6 +66,20 @@
 		    $this->assertEquals($actual_value, $expected_value);
 		}
 
+        public function testGetCategory() {
+            $stub = $this->getMock('Book', array('doStatement', 'fetchAll'));
+	        $stub->expects($this->any())
+	        	 ->method('doStatement')
+	        	 ->with('SELECT DISTINCT category FROM book', array())
+				 ->will($this->returnValue(new PDOStatement()));
+		    $stub->expects($this->any())
+		         ->method('fetchAll')
+	    	     ->will($this->returnValue(array('category' => 'listentothis')));
+	    	$actual_value   = $stub->getCategory();
+		    $expected_value = array( 'category' => 'listentothis' ); 
+		    $this->assertEquals($actual_value, $expected_value);
+        }
+
 		public function tearDown() {
 		    unset($this->book);
 		}
