@@ -63,7 +63,7 @@
 	        $stub = $this->getMock('Lesson', array('doStatement', 'fetchAll', 'shuffleAlgorithm'));
     	    $stub->expects($this->any())
 	             ->method('doStatement')
-	             ->with($actual_sql, array(1))
+	             ->with($actual_sql, array(1, 1))
         		 ->will($this->returnValue($this->pdoStatInstance));
 	        $stub->expects($this->any())
 	             ->method('fetchAll')

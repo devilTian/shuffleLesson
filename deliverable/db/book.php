@@ -8,7 +8,8 @@
 	 	   	'delete' 	    => 'delete from book where id = ?',
 		    'update'        => 'update book set state = ? where id = ?',
             'getSpecBook'   => 'select * from book where id = ?',
-            'getCategory'   => 'SELECT DISTINCT category FROM book'
+            'getCategory'   => 'SELECT DISTINCT category FROM book',
+            'getBooksByStat'=> 'SELECT * FROM book WHERE state = ?'
 		); 
 	
         function addNewBook( $bookName, $category=null, $description=null ) {
@@ -39,6 +40,13 @@
 
         function getCategory() {
             $sth = $this->doStatement(self::$sql['getCategory'], array());
+		    return $this->fetchAll($sth, PDO::FETCH_ASSOC);
+        }
+
+        #TODO UNITTEST
+        function getBooksByStat( $state ) {
+            $values = array( $state );
+            $sth    = $this->doStatement(self::$sql['getBooksByStat'], $values);
 		    return $this->fetchAll($sth, PDO::FETCH_ASSOC);
         }
     }

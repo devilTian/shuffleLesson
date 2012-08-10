@@ -20,6 +20,12 @@
 		font: 14px/150% Arial,Helvetica,sans-serif;
 		margin: 0 0 12px;
 	}
+    h3 {
+        display:inline;
+        font-size:1.17em;
+        font-weight:bold;
+        color:#209E85;
+    }
 	ul {
 		list-style-type:none;
 	}
@@ -103,7 +109,38 @@
         border-top: solid 1px #AAA;
     }
     .specBookInfo {
-        margin-top: 4px;
+        margin-top:4px;
+    }
+    .specBookInfo > div {
+        margin-top:10px
+    }
+    .bookInfo_div {
+        width:100%;
+        padding-bottom:10px;
+        border-bottom:solid 1px #CCC;
+    }
+    .updateBookInfo_p {
+        font-size:12px;
+        text-align:center;
+        color:#BBB;
+        width:110px;
+        padding-top:10px;
+    }
+    .updateBookInfo_p a:visited {
+        color:#BBB;
+        font-size:12px;
+        text-align:center;
+    }
+    .updateBookInfo_p a:hover { 
+        color:white;
+        font-size:12px;
+        border-left:1px solid #F99;
+        border-top:1px solid #F99;
+        border-right:1px solid #F33;
+        border-bottom:1px solid #F33;
+        background-color:#733;
+        text-align:center;
+        
     }
     .specBookInfo span {
         color:#666;
@@ -121,6 +158,12 @@
     .createBook_btn:hover, .collect_btn:hover {
         color:white;
         background:#039;
+    }
+    .createBook_div {
+        background:#FFF6ED;
+        padding:4px 9px;
+        border:2px solid #FAEFE3;
+        margin-bottom:20px
     }
     .related_info {
         margin-top:24px;
@@ -154,6 +197,29 @@
         color:#FFF;
     }
 
+    #startListen {
+        position: relative;
+        padding-top: 30px;
+    }
+    #startListen a {
+        background-image: -moz-linear-gradient(#209E85, #107B65);
+        background-color: #107B65;
+        background-repeat: repeat-x;
+        display: inline-block;
+        font-size: 30px;
+        color: #EEE;
+        border-radius: 5px;
+        line-height: 20px;
+        padding: 15px 40px;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(0, 0, 0, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.25);
+        text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);
+    }
+    #startListen a:hover {
+        background-position: 0 -15px;
+        color: #EEEEEE;
+    }
+    
+
 	#wrapper {
 		margin: 15px auto;
 		width: 950px;
@@ -176,6 +242,18 @@
 		width:106px;
 		margin-right:15px
 	}
+    .book_title {
+        color:#C09;
+        padding:5px;
+        font-weight:bold;
+        font-size:12px;
+    }
+    .book_count {
+        color:gray;
+        font-size:12px;
+        padding-left:5px;
+        padding-bottom:10px;
+    }
 
 	#footer {
 		border-top: 1px dashed #DDDDDD;

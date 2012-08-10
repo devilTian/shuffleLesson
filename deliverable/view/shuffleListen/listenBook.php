@@ -37,7 +37,10 @@
                     ?>
 				</div>
 				<div class='aside'>
-                    <?php VH::instance()->showListenBookCategory(); ?>
+                    <?php 
+                        VH::instance()->showCreateBookBtn();
+                        VH::instance()->showListenBookCategory();
+                    ?>
 				</div>
 			</div>
 			<?php

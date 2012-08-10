@@ -36,7 +36,7 @@ class Lesson extends DbBase {
 	}
 
 	function shuffleLesson( $bookId ) {
-        $values    = array( $bookId );
+        $values    = array( $bookId, $bookId );
         $sth       = $this->doStatement(self::$sql['shuffleLesson'], $values);
 	    $fetResult = $this->fetchAll($sth, PDO::FETCH_ASSOC);
 	    return $this->shuffleAlgorithm($fetResult);
@@ -59,7 +59,12 @@ class Lesson extends DbBase {
         $values    = array( $bookId );
         $sth       = $this->doStatement(self::$sql['getProgress'], $values);
 	    $result    = $this->fetch($sth, PDO::FETCH_ASSOC);
-        return $result['hasListenedCount']/($this->getLessonCount( $bookId )) * 100;
+        $lessonSum = $this->getLessonCount( $bookId );
+        if ( $lessonSum > 0 ) {
+            return $result['hasListenedCount']/($lessonSum) * 100;
+        } else {
+            return 0;
+        }
     }
 
 	//TODO
