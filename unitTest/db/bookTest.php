@@ -80,6 +80,20 @@
 		    $this->assertEquals($actual_value, $expected_value);
         }
 
+        public function testGetBooksByStat() {
+            $stub = $this->getMock('Book', array('doStatement', 'fetchAll'));
+		    $expected_value = array( array('id'=>1,'name'=>'test','state'=>'C','category'=>'test','description'=>null,) ); 
+	        $stub->expects($this->any())
+	        	 ->method('doStatement')
+	        	 ->with('SELECT * FROM book WHERE state = ?', array('C'))
+				 ->will($this->returnValue(new PDOStatement()));
+		    $stub->expects($this->any())
+		         ->method('fetchAll')
+	    	     ->will($this->returnValue($expected_value));
+	    	$actual_value   = $stub->getBooksByStat('C');
+		    $this->assertEquals($actual_value, $expected_value);
+        }
+
 		public function tearDown() {
 		    unset($this->book);
 		}
