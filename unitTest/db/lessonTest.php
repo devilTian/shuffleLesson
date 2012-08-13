@@ -11,10 +11,23 @@
 	
         private $lesson;
         private $pdoStatInstance;
+        private $lessonData;
 	
 	    public function setUp() {
 	        $this->lesson = new subLesson();
             $this->pdoStatInstance = new PDOStatement();
+
+            //fake data 
+            $this->lessonData = array(
+                array('les_id' => 1, 'les_num'   => 1, 'les_name'   => 't1',
+                    'les_unit' => 1, 'les_score' => 1, 'les_bookId' => 1),
+                array('les_id' => 2, 'les_num'   => 2, 'les_name'   => 't2',
+                    'les_unit' => 1, 'les_score' => 1, 'les_bookId' => 1),
+                array('les_id' => 3, 'les_num'   => 3, 'les_name'   => 't3',
+                    'les_unit' => 1, 'les_score' => 1, 'les_bookId' => 2),
+                array('les_id' => 4, 'les_num'   => 4, 'les_name'   => 't4',
+                    'les_unit' => 1, 'les_score' => 1, 'les_bookId' => 2)
+            );
     	}
 
 	    public function testGetLessonsFromBook() {
@@ -52,27 +65,27 @@
     	}
 
 	    public function testShuffleAlgorithm() {
-	        $testArr      = array(1, 2, 3, 4, 5);
-	        $actual_value = $this->lesson->shuffleAlgorithm($testArr);
-    	    $this->assertLessThanOrEqual($actual_value, 1);
-	        $this->assertGreaterThanOrEqual($actual_value, 5);
+	        $actual_value = $this->lesson->shuffleAlgorithm($this->lessonData);
+    	    $this->assertLessThanOrEqual($actual_value['les_id'], 1);
+	        $this->assertGreaterThanOrEqual($actual_value['les_id'], 4);
     	}
 
     	public function testShuffleLesson() {
-            $actual_sql = 'SELECT * FROM lesson WHERE les_bookid = ? AND les_id not in  (select les_id from recordTime where les_id in (SELECT les_id FROM lesson WHERE les_bookid = ?));';
+            $actual_sql = 'SELECT * FROM lesson WHERE les_bookid IN (?,?) AND les_id not in  (select les_id from recordTime where les_id in (SELECT les_id FROM lesson WHERE les_bookid IN (?,?) ))';
 	        $stub = $this->getMock('Lesson', array('doStatement', 'fetchAll', 'shuffleAlgorithm'));
     	    $stub->expects($this->any())
 	             ->method('doStatement')
-	             ->with($actual_sql, array(1, 1))
+	             ->with($actual_sql, array(1, 2, 1, 2))
         		 ->will($this->returnValue($this->pdoStatInstance));
 	        $stub->expects($this->any())
 	             ->method('fetchAll')
-        		 ->will($this->returnValue(array(1, 2, 3)));
+        		 ->will($this->returnValue($this->lessonData));
 	        $stub->expects($this->any())
 	             ->method('shuffleAlgorithm')
-        		 ->will($this->returnValue(array(2)));
-	        $actual_value = $stub->shuffleLesson(1);
-    	    $this->assertEquals($actual_value, array(2));
+                 ->with($this->lessonData)
+        		 ->will($this->returnValue($this->lessonData[0]));
+	        $actual_value = $stub->shuffleLesson(array(1,2));
+    	    $this->assertEquals($actual_value, $this->lessonData[0]);
     	}
     
         public function testGetRecord() {
@@ -120,6 +133,7 @@
 	    public function tearDown() {
 	        unset($this->lesson);
             unset($this->pdoStatInstance);
+            unset($this->lessonData);
     	}
     } 
 ?>

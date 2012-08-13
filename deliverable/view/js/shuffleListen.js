@@ -40,3 +40,7 @@ function modifyBookState(bookId, newState) {
     myReq.onreadystatechange = ModifyBookStateResponse;
     myReq.send(params);
 }
+
+function punchCard(lessonId) {
+    alert(lessonId);
+}

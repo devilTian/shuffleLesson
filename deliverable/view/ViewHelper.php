@@ -235,12 +235,48 @@
                   <a href='startListen.php'>开始学习</a>
                   </div>";
         }
+        public function showPunchCardBtn( $lessonId ) {
+            echo "<div id='punchCard'>
+                  <a onClick='punchCard($lessonId)'>打卡</a>
+                  </div>";
+        }
+        public function showSpecLessonInfo( $lessonInfo ) {
+            $lessonId    = $lessonInfo['les_id'];
+            $bookId      = $lessonInfo['les_bookid'];
+            $lessonNum   = $lessonInfo['les_num'];
+            $lessonUnit  = $lessonInfo['les_unit'];
+            $lessonName  = "Lesson {$lessonNum}   [{$lessonInfo['les_name']}]";
+            $recordCount = count($this->lesson->getRecord($lessonId));
+
+            $bookData    = $this->book->getSpecifiedBook($bookId);
+            $bookName    = $bookData['name'];
+
+            $this->showSpecBookImg( $bookId, true );
+
+            echo "<div class='float_left'>
+                <span>课本名称：</span>
+                <a href='#'>《{$bookName}》</a>
+                <br/><br/>
+                <span>所选课文名称：</span>
+                {$lessonName}
+                <br/><br/>
+                <span>第 {$lessonUnit} 单元</span>
+                $lessonCount
+                <br/><br/>
+                <span>已经学习过 {$recordCount} 遍</span>
+                </div><br class='clearfix'/><br/>";
+        }
+
+        //  return selected lesson ID
         public function showShuffleLesson() {
-            $books = $this->book->getBooksByStat('R');
+            $books      = $this->book->getBooksByStat('R');
+            $booksIdArr = array();
             foreach( $books as $book ) {
-                print_r($this->lesson->shuffleLesson($book['id']));
-                echo '<br/><br/>';
+                $booksIdArr[] = $book['id'];
             }
+            $data = $this->lesson->shuffleLesson($booksIdArr);
+            $this->showSpecLessonInfo($data);
+            return $data['les_id'];
         }
 	}
 ?>

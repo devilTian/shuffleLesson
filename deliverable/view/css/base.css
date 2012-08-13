@@ -197,11 +197,11 @@
         color:#FFF;
     }
 
-    #startListen {
+    #punchCard, #startListen {
         position: relative;
         padding-top: 30px;
     }
-    #startListen a {
+    #punchCard a, #startListen a {
         background-image: -moz-linear-gradient(#209E85, #107B65);
         background-color: #107B65;
         background-repeat: repeat-x;
@@ -214,7 +214,7 @@
         box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(0, 0, 0, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.25);
         text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);
     }
-    #startListen a:hover {
+    #punchCard a:hover, #startListen a:hover {
         background-position: 0 -15px;
         color: #EEEEEE;
     }

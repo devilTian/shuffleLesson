@@ -43,7 +43,6 @@
 		    return $this->fetchAll($sth, PDO::FETCH_ASSOC);
         }
 
-        #TODO UNITTEST
         function getBooksByStat( $state ) {
             $values = array( $state );
             $sth    = $this->doStatement(self::$sql['getBooksByStat'], $values);

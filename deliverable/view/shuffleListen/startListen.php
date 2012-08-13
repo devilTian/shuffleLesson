@@ -8,6 +8,7 @@
 		?>
 		<title>Start Listen</title>
 		<link rel='stylesheet' media='screen' type='text/css' href='../css/base.css'/>
+        <script type='text/javascript' src='../js/shuffleListen.js'></script>
     </head>
 	<body>
         <!-- header -->
@@ -19,15 +20,15 @@
 			<!-- content -->
             <div id="content">
                 <div class='article'>
-                    <?php VH::instance()->showShuffleLesson();  ?>
+                    <?php $lessonId = VH::instance()->showShuffleLesson();  ?>
                 </div>
                 <div class='aside'>
+                    <?php VH::instance()->showPunchCardBtn($lessonId);  ?>
                 </div>
             </div>
 			<?php
 				VH::instance()->showFooter();
 			?>
 		</div>
-	
 	</body>
 </html>
