@@ -1,5 +1,5 @@
 <?php
-require_once(__dir__ . '/../exception/exception.php');
+require_once('exception/exception.php');
 
 abstract class DbBase {
 	static $DB;

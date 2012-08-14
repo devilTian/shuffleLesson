@@ -1,6 +1,10 @@
 <?php
-	require_once(__DIR__ . '/../db/book.php');
-	require_once(__DIR__ . '/../db/lesson.php');
+    $installAbsolutePath =
+        '/usr/local/apache2/htdocs/git_dt/shuffleLesson/deliverable/';
+    set_include_path(get_include_path . ':' . $installAbsolutePath);
+
+	require_once('db/book.php');
+	require_once('db/lesson.php');
 
 	class VH {
 		private $book;
@@ -29,6 +33,10 @@
 
 		public function showShuffleListenNav() {
 		    include_once('Layout/shuffleListenNav.html');
+		}
+
+		public function showShuffleReadNav() {
+		    include_once('Layout/shuffleReadNav.html');
 		}
 
         public function simpleCharSet() {

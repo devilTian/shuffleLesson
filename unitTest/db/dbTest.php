@@ -1,5 +1,5 @@
 <?php
-    require_once('deliverable/db/db.php');
+    require_once('db/db.php');
 
     class mockPDO extends PDO {
 	function __construct() {}

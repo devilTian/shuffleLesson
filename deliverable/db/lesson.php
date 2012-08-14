@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Chongqing');
-require_once(__dir__ . '/db.php');
+require_once('db/db.php');
 
 class Lesson extends DbBase {
 	static $sql = array(

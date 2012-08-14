@@ -1,5 +1,5 @@
 <?php
-    require_once('deliverable/db/lesson.php');
+    require_once('db/lesson.php');
    
     class subLesson extends Lesson {
 		public function shuffleAlgorithm($fetResult) {

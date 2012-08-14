@@ -1,5 +1,5 @@
 1. how to run it
->phpunit unitTest
+> phpunit -c unitTest/phpunit.xml .
 
 2. layout
 	unitTest
@@ -8,5 +8,5 @@
 	|   |-- bookTest.php
 	|    -- lessonTest.php
 	|
-	|
-	 -- phpunit.xml
+	|-- phpunit.xml
+	 -- README

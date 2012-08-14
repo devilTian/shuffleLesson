@@ -1,5 +1,5 @@
 <?php
-    require_once(__dir__ . '/db.php');
+    require_once('db/db.php');
 
     class Book extends DbBase {
 		static $sql = array(
