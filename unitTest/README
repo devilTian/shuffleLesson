@@ -1,5 +1,5 @@
-1. how to run it
-> phpunit -c unitTest/phpunit.xml .
+1. how to run it in root path
+> phpunit .
 
 2. layout
 	unitTest
