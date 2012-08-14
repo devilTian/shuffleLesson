@@ -271,6 +271,10 @@
         public function showShuffleLesson() {
             $books      = $this->book->getBooksByStat('R');
             $booksIdArr = array();
+            if ( count($books) == 0 ) {
+                echo "<p style='color:red;font-weight:bold'>您还没有选择任何听力资料</p>";
+                return false;
+            }
             foreach( $books as $book ) {
                 $booksIdArr[] = $book['id'];
             }
