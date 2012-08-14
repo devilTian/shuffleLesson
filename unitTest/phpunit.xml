@@ -1,5 +1,0 @@
-<phpunit>
-    <php>
-        <includePath>/usr/local/apache2/htdocs/git_dt/shuffleLesson/deliverable/</includePath>
-    </php>
-</phpunit>
