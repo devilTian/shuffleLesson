@@ -27,10 +27,12 @@
                 </div>
                 <div class='aside'>
                     <?php
-                        echo "<div id='punchCardArea'>";
-                        VH::instance()->showScoreBtn();
-                        VH::instance()->showPunchCardBtn($lessonId);
-                        echo "</div>";
+                        if( $lessonId != false) {
+                            echo "<div id='punchCardArea'>";
+                            VH::instance()->showScoreBtn();
+                            VH::instance()->showPunchCardBtn($lessonId);
+                            echo "</div>";
+                        }
                     ?>
                 </div>
             </div>
