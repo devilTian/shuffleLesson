@@ -251,7 +251,7 @@
             $bookData    = $this->book->getSpecifiedBook($bookId);
             $bookName    = $bookData['name'];
 
-            $this->showSpecBookImg( $bookId, true );
+            $this->showSpecBookImg( $bookId );
 
             echo "<div class='float_left'>
                 <span>课本名称：</span>
@@ -277,6 +277,24 @@
             $data = $this->lesson->shuffleLesson($booksIdArr);
             $this->showSpecLessonInfo($data);
             return $data['les_id'];
+        }
+
+        public function showScoreBtn() {
+            echo "<div class='scoreBtn'>
+                <input type='radio' name='score' value='1'/>1分
+                <input type='radio' name='score' value='2'/>2分
+                <input type='radio' name='score' value='3'/>3分
+                <input type='radio' name='score' value='4'/>4分
+                <input type='radio' name='score' value='5'/>5分
+            </div>";
+        }
+
+        public function refreshScore( $lessonId, $score ) {
+            $this->lesson->refreshScore( $lessonId, $score);
+        }
+
+        public function punchCard($lessonId) {
+            $this->lesson->refreshRecord($lessonId);
         }
 	}
 ?>

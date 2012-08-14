@@ -197,6 +197,9 @@
         color:#FFF;
     }
 
+    .scoreBtn input{
+    }
+
     #punchCard, #startListen {
         position: relative;
         padding-top: 30px;

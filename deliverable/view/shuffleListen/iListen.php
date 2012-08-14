@@ -24,6 +24,22 @@
             <div id="content">
                 <div class='article'>
                     <div class="float_left" style="margin-top:5px">
+                        <h3>进步曲线</h3>
+                        <br/>
+                        <div style='background-color:pink;height:300px;width:590px;'>&nbsp;</div>
+                    </div>
+                    <br class='clearfix'/>
+                    <br/><br/>
+
+                    <div class="float_left" style="margin-top:5px">
+                        <h3>每日复习盘点</h3>
+                        <br/>
+                        <div style='background-color:#77FFAA;height:300px;width:590px;'>&nbsp;</div>
+                    </div>
+                    <br class='clearfix'/>
+                    <br/><br/>
+
+                    <div class="float_left" style="margin-top:5px">
                         <h3>正在听的书</h3>(&nbsp;<a href='#'>More</a>&nbsp;)
                         <br/>
                         <?php VH::instance()->showBooksByStat('R'); ?>

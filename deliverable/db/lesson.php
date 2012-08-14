@@ -9,7 +9,8 @@ class Lesson extends DbBase {
 	    'addRecord'     => 'INSERT INTO recordTime VALUE(?, ?)',
         'getRecord'     => 'SELECT datetime FROM recordTime WHERE les_id = ? ORDER BY datetime DESC',
         'getLessonCount'=> 'SELECT COUNT(*) AS sum FROM lesson WHERE les_bookid=?',
-        'getProgress'   => 'SELECT COUNT(DISTINCT les_id) AS hasListenedCount FROM recordTime WHERE les_id IN (select les_id from lesson where les_bookid=?)'
+        'getProgress'   => 'SELECT COUNT(DISTINCT les_id) AS hasListenedCount FROM recordTime WHERE les_id IN (select les_id from lesson where les_bookid=?)',
+        'refreshScore'  => 'UPDATE lesson SET les_score = ? WHERE les_id = ?'
 	);
 
 	function getLessonsFromBook( $bookId ) {
@@ -18,7 +19,7 @@ class Lesson extends DbBase {
 	    return $this->fetchAll($sth, PDO::FETCH_ASSOC);
 	}
 	
-	function updateRecord( $lessonId ) {
+	function refreshRecord( $lessonId ) {
 	    $values = array( $lessonId, date('Y-m-d H:i:s') );
         $sth    = $this->doStatement(self::$sql['addRecord'], $values);
 	}
@@ -46,7 +47,7 @@ class Lesson extends DbBase {
 	}
 	
     function getRecord( $lessonId ) {
-        $values = array( $lessonId);
+        $values = array( $lessonId );
         $sth    = $this->doStatement(self::$sql['getRecord'], $values);
 	    return $this->fetchAll($sth, PDO::FETCH_ASSOC);
     }
@@ -64,10 +65,16 @@ class Lesson extends DbBase {
 	    $result    = $this->fetch($sth, PDO::FETCH_ASSOC);
         $lessonSum = $this->getLessonCount( $bookId );
         if ( $lessonSum > 0 ) {
-            return $result['hasListenedCount']/($lessonSum) * 100;
+            $progress = $result['hasListenedCount']/($lessonSum) * 100;
+            return round($progress, 1);
         } else {
             return 0;
         }
+    }
+
+    public function refreshScore( $lessonId, $score ) {
+        $values    = array( $score, $lessonId );
+        $sth       = $this->doStatement(self::$sql['refreshScore'], $values);
     }
 
 	//TODO

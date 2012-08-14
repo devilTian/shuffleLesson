@@ -41,6 +41,39 @@ function modifyBookState(bookId, newState) {
     myReq.send(params);
 }
 
+function PunchCardResponse() {
+    if (myReq.readyState == 4) {
+        if (myReq.status == 200) {
+            document.getElementById('punchCardArea').innerHTML = '<h2>' + myReq.responseText + '</h2>';
+        } else { 
+            alert('There was a problem with the request. code: ' + myReq.status);
+        }
+    } else {
+        document.getElementById('punchCard').innerHTML = '<img src="../image/ajax-loader.gif"/>';
+    }
+}
+
+function getScore() {
+    var radioBtn = document.getElementsByName('score');
+    for(var i=0; i<radioBtn.length; i++ ) {
+        if( radioBtn[i].checked ) {
+            return radioBtn[i].value;
+        }
+    }
+    return false;
+}
+
 function punchCard(lessonId) {
-    alert(lessonId);
+    var score = getScore();
+    if ( score === false ) {
+        alert('please select the score');
+        return;
+    }
+    var params = 'lessonId=' + encodeURI(lessonId) + '&score=' + encodeURI(score);
+    myReq.open("POST", 'punchCard.php', true);
+    myReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    myReq.setRequestHeader("Content-length", params.length);
+    myReq.setRequestHeader("Connection", "close");
+    myReq.onreadystatechange = PunchCardResponse;
+    myReq.send(params);
 }

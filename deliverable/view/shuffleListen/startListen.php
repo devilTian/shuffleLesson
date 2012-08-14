@@ -9,6 +9,9 @@
 		<title>Start Listen</title>
 		<link rel='stylesheet' media='screen' type='text/css' href='../css/base.css'/>
         <script type='text/javascript' src='../js/shuffleListen.js'></script>
+        <script>
+            var myReq = getXMLHTTPRequest();
+        </script>
     </head>
 	<body>
         <!-- header -->
@@ -23,7 +26,12 @@
                     <?php $lessonId = VH::instance()->showShuffleLesson();  ?>
                 </div>
                 <div class='aside'>
-                    <?php VH::instance()->showPunchCardBtn($lessonId);  ?>
+                    <?php
+                        echo "<div id='punchCardArea'>";
+                        VH::instance()->showScoreBtn();
+                        VH::instance()->showPunchCardBtn($lessonId);
+                        echo "</div>";
+                    ?>
                 </div>
             </div>
 			<?php

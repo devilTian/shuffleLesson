@@ -43,12 +43,12 @@
 	        $this->assertEquals($actual_value, array());
     	}
 
-	    public function testUpdateRecord() {
+	    public function testRefreshRecord() {
 	        $stub = $this->getMock('Lesson', array('doStatement'));
     	    $stub->expects($this->any())
 	             ->method('doStatement')
 	             ->with('INSERT INTO recordTime VALUE(?, ?)', array(1, date('Y-m-d H:i:s')));
-    	    $stub->updateRecord(1);
+    	    $stub->refreshRecord(1);
 	    }
 
     	public function testGetALesson() {
@@ -127,7 +127,15 @@
 	             ->method('getLessonCount')
         		 ->will($this->returnValue(96));
 	        $actual_value = $stub->getStudyProgress(2);
-    	    $this->assertEquals($actual_value, 3.125);
+    	    $this->assertEquals($actual_value, 3.1);
+        }
+
+        public function testRefreshScore() {
+	        $stub = $this->getMock('Lesson', array('doStatement'));
+    	    $stub->expects($this->any())
+	             ->method('doStatement')
+	             ->with('UPDATE lesson SET les_score = ? WHERE les_id = ?', array(1,5));
+    	    $stub->refreshScore(5,1);
         }
 
 	    public function tearDown() {
