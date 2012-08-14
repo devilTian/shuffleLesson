@@ -1,5 +1,5 @@
 <?php
-	require_once('../ViewHelper.php');
+	require_once('view/ViewHelper.php');
 
     $lessonId = $_POST['lessonId'];
     $score    = $_POST['score'];

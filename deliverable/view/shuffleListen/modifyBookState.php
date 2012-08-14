@@ -1,5 +1,5 @@
 <?php
-	require_once('../ViewHelper.php');
+	require_once('view/ViewHelper.php');
 
     $id    = $_POST['bookId'];
     $state = $_POST['newState'];

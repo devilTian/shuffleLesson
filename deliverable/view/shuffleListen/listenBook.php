@@ -1,5 +1,5 @@
 <?php
-	require_once('../ViewHelper.php');
+	require_once('view/ViewHelper.php');
 ?>
 <html>
     <head>
